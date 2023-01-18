@@ -31,7 +31,7 @@ local      locale     localectl  localedef
 **mlocate** 是一个用来维护这个数据库的工具。它会扫描文件系统并建立一个数据库，里面包含了文件的路径信息。然后你就可以使用 locate 命令来查找文件了。
 
 ```shell
-[root@centos8 ~]#yum -y install mlocate
+[root@centos8 ~]#yum -y install mlocate 或者dnf -y install mlocate
 Last metadata expiration check: 0:17:25 ago on Tue 17 Jan 2023 11:17:52 AM CST.
 Dependencies resolved.
 ==========================================================================================================================================
