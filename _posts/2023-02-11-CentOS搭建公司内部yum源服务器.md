@@ -142,6 +142,39 @@ mount: /var/www/html/centos/8: WARNING: device write-protected, mounted read-onl
 #将sr1挂载到/var/www/html/centos/7/os/x86_64 下面
 [root@CentOS8 html]# mount /dev/sr1 /var/www/html/centos/7/os/x86_64/
 
+#这种挂载的方式只是临时生效，当我们重启以后这个配置就失效了
+#永久挂载
+
+[root@CentOS8 ~]# blkid
+/dev/sda1: UUID="faa1dbe8-f9e3-4eb0-a6f9-b01cd799353f" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="04271186-01"
+/dev/sda2: UUID="af876911-3be3-4add-95f7-44515a40d6cf" BLOCK_SIZE="512" TYPE="xfs" PARTUUID="04271186-02"
+/dev/sda3: UUID="1f4848ac-39e5-4eb7-b286-ea566518c104" TYPE="swap" PARTUUID="04271186-03"
+/dev/sda5: UUID="2e4557b2-c49a-4a4f-ab97-117ae58c29b7" BLOCK_SIZE="512" TYPE="xfs" PARTUUID="04271186-05"
+/dev/sr0: BLOCK_SIZE="2048" UUID="2021-11-13-01-04-26-00" LABEL="CentOS-8-5-2111-x86_64-dvd" TYPE="iso9660" PTUUID="5fb10f71" PTTYPE="dos"
+/dev/sr1: BLOCK_SIZE="2048" UUID="2020-11-02-15-15-23-00" LABEL="CentOS 7 x86_64" TYPE="iso9660" PTUUID="6b8b4567" PTTYPE="dos"
+#上面是每个磁盘以及分区的UUID和类型
+
+#在配置文件的末尾添加这两行,UUID对应的就是要添加的驱动，这里写/dev/sr0这种方式也是可以的，后面的/var/www/html对应的是挂载的目录，iso9660就是上面的type，后面默认是defaults 0 0
+[root@CentOS8 ~]# vi /etc/fstab
+UUID=2021-11-13-01-04-26-00 /var/www/html/centos/8                iso9660       defaults 0 0
+UUID=2020-11-02-15-15-23-00 /var/www/html/centos/7/os/x86_64/     iso9660       defaults 0 0
+
+#挂载
+[root@CentOS8 ~]# mount -a
+mount: /var/www/html/centos/8: WARNING: device write-protected, mounted read-only.
+mount: /var/www/html/centos/7/os/x86_64: WARNING: device write-protected, mounted read-only.
+[root@CentOS8 ~]# lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0  200G  0 disk
+├─sda1   8:1    0    1G  0 part /boot
+├─sda2   8:2    0  100G  0 part /
+├─sda3   8:3    0    2G  0 part [SWAP]
+├─sda4   8:4    0    1K  0 part
+└─sda5   8:5    0   50G  0 part /data
+sr0     11:0    1 10.1G  0 rom  /var/www/html/centos/8
+sr1     11:1    1  9.5G  0 rom  /var/www/html/centos/7/os/x86_64
+
+
 #查看是否挂载成功
 [root@CentOS8 html]# tree -d
 .
