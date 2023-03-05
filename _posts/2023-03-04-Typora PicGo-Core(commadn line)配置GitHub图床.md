@@ -31,7 +31,7 @@
     "github": {
       "repo": "xingyuyucoder/TyporaImages",
       "branch": "main",
-      "token": "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",
+      "token": "填写对应的token",
       "path": "img/",
       "customUrl": "https://github.com/xingyuyucoder/TyporaImages/raw/main"
     },
@@ -64,8 +64,8 @@ customUrl：后面一定是/raw/main
   "picBed": {
     "uploader": "tcyun", 
     "tcyun": {
-      "secretId": "AKIDhIgWOTLyOcdQ2Tkp174pOlvwkKhqIo58",
-      "secretKey": "ua2ILn23DD4h6IIArLdidLrBKG9qLcfX",
+      "secretId": "填写对应的id",
+      "secretKey": "key",
       "bucket": "typora-images-1307361841",  
       "appId": "1307361841",
       "area": "ap-beijing",
