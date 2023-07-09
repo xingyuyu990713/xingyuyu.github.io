@@ -2,6 +2,9 @@
 
 
 
+
+# 配置YUM源
+
 阿里云提供了写好的CentOS和Ubuntu的仓库文件，下载链接如下：
 
 ```sh
@@ -105,8 +108,7 @@ http://mirrors.cqu.edu.cn/
 ```sh
 [base]
 name=BaseOS
-baseurl=file:///misc/cd
-        https://mirrors.aliyun.com/centos/$releasever/os/$basearch/
+baseurl=https://mirrors.aliyun.com/centos/$releasever/os/$basearch/
         https://mirrors.cloud.tencent.com/centos/$releasever/os/$basearch/
         https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/os/$basearch/
 gpgcheck=0
@@ -164,16 +166,14 @@ repolist: 18,329
 ```bash
 [xyyBaseOS]
 name=BaseOS
-baseurl=file:///misc/cd/BaseOS
-        https://mirrors.aliyun.com/centos/$releasever/BaseOS/$basearch/os/
+baseurl=https://mirrors.aliyun.com/centos/$releasever/BaseOS/$basearch/os/
         https://mirrors.cloud.tencent.com/centos/$releasever/BaseOS/$basearch/os/
         https://mirrors.tuna.tsinghua.edu.cn/cc/$releasever/BaseOS/$basearch/os/
 gpgcheck=0
 
 [xyyAppStream]
 name=AppStream
-baseurl=file:///misc/cd/AppStream
-        https://mirrors.aliyun.com/centos/$releasever/AppStream/$basearch/os/
+baseurl=https://mirrors.aliyun.com/centos/$releasever/AppStream/$basearch/os/
         https://mirrors.cloud.tencent.com/centos/$releasever/AppStream/$basearch/os/
         https://mirrors.tuna.tsinghua.edu.cn/cc/$releasever/AppStream/$basearch/os/
 gpgcheck=0
@@ -264,6 +264,21 @@ Total packages: 17,457
 [root@centos8 yum.repos.d]#
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
