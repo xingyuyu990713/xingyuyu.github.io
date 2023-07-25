@@ -121,6 +121,16 @@ baseurl=https://mirrors.aliyun.com/centos/$releasever/extras/$basearch/
 gpgcheck=0
 enabled=1
 
+[updates]
+name=CentOS-7 - Updates - mirrors.aliyun.com
+failovermethod=priority
+baseurl=http://mirrors.aliyun.com/centos/7/updates/$basearch/
+        http://mirrors.aliyuncs.com/centos/7/updates/$basearch/
+        http://mirrors.cloud.aliyuncs.com/centos/7/updates/$basearch/
+gpgcheck=1
+gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+
+
 [epel]
 name=epel
 baseurl=https://mirrors.aliyun.com/epel/$releasever/$basearch/
